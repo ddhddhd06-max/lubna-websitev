@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رويانا - جملة الورود المستوردة</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading" class="loading-screen">
+        <div class="loading-content">
+            <div class="flower-loader"></div>
+            <p>جاري تحميل الجمال...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="images/logo.svg" alt="رويانا">
+                <span>رويانا</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">الرئيسية</a></li>
+                <li><a href="#products" class="nav-link">المنتجات</a></li>
+                <li><a href="#gallery" class="nav-link">معرض الأعمال</a></li>
+                <li><a href="#about" class="nav-link">عنّا</a></li>
+                <li><a href="#contact" class="nav-link">اتصل بنا</a></li>
+                <li><a href="login.html" class="nav-link login-btn">دخول المالك</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="floating-flowers">
+                <div class="flower f1"></div>
+                <div class="flower f2"></div>
+                <div class="flower f3"></div>
+                <div class="flower f4"></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-word">جمال</span>
+                <span class="title-word">لا</span>
+                <span class="title-word">يوصف</span>
+            </h1>
+            <p class="hero-subtitle">أجود أنواع الورود المستوردة بالجملة لتجار الجملة المتميزين</p>
+            <div class="hero-buttons">
+                <a href="#products" class="btn btn-primary">استعرض المنتجات</a>
+                <a href="#gallery" class="btn btn-secondary">شاهد أعمالنا</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>لماذا تختار رويانا؟</h2>
+                <p>نحن نقدم الأفضل دائماً</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>مستورد مباشر</h3>
+                    <p>ورود مستوردة من أفضل المزارع العالمية</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚚</div>
+                    <h3>توصيل سريع</h3>
+                    <p>شحن مباشر من المستودع إلى عملك</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💎</div>
+                    <h3>جودة فائقة</h3>
+                    <p>أعلى معايير الجودة والأناقة</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📦</div>
+                    <h3>أسعار جملة</h3>
+                    <p>أفضل الأسعار لتجار الجملة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Preview -->
+    <section id="products" class="products-preview">
+        <div class="container">
+            <div class="section-header">
+                <h2>منتجاتنا المميزة</h2>
+                <p>تشكيلة واسعة من أجود الورود</p>
+            </div>
+            <div class="products-grid" id="preview-products">
+                <!-- سيتم ملؤها بالجافاسكريبت -->
+            </div>
+            <div class="text-center">
+                <a href="products.html" class="btn btn-outline">عرض كل المنتجات</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>معرض أعمالنا</h2>
+                <p>لقطات من جمال طبيعتنا</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/gallery/1.jpg" alt="باقات مميزة">
+                    <div class="gallery-overlay">
+                        <h3>باقات مميزة</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery/2.jpg" alt="ورود حفلات">
+                    <div class="gallery-overlay">
+                        <h3>ورود حفلات</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery/3.jpg" alt>
+                    <div class="gallery-overlay">
+                        <h3>تصميمات فنية</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>رويانا</h3>
+                    <p>جملة الورود المستوردة - لأنك تستحق الأفضل</p>
+                </div>
+                <div class="footer-section">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#products">المنتجات</a></li>
+                        <li><a href="#about">عنّا</a></li>
+                        <li><a href="#contact">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>معلومات الاتصال</h4>
+                    <p>📞 0770 123 4567</p>
+                    <p>📧 info@royana.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 رويانا. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>

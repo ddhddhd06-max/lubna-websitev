@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة الطلبات - رويانا</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+    <!-- Admin Sidebar -->
+    <nav class="admin-sidebar">
+        <div class="admin-brand">
+            <h2>🌹 رويانا</h2>
+            <small>لوحة التحكم</small>
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li class="menu-item">
+                <a href="dashboard.html" class="menu-link">
+                    <span class="menu-icon">📊</span>
+                    <span class="menu-text">لوحة التحكم</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="products.html" class="menu-link">
+                    <span class="menu-icon">🌹</span>
+                    <span class="menu-text">إدارة المنتجات</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="orders.html" class="menu-link active">
+                    <span class="menu-icon">📦</span>
+                    <span class="menu-text">الطلبات</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="customers.html" class="menu-link">
+                    <span class="menu-icon">👥</span>
+                    <span class="menu-text">العملاء</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="analytics.html" class="menu-link">
+                    <span class="menu-icon">📈</span>
+                    <span class="menu-text">التقارير</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="settings.html" class="menu-link">
+                    <span class="menu-icon">⚙️</span>
+                    <span class="menu-text">الإعدادات</span>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <button id="logoutBtn" class="btn-admin btn-admin-secondary btn-block">
+                <span class="menu-icon">🚪</span>
+                <span class="menu-text">تسجيل الخروج</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <!-- Admin Header -->
+        <header class="admin-header">
+            <div class="header-left">
+                <button id="sidebarToggle" class="btn-admin btn-admin-secondary">
+                    ☰
+                </button>
+                <h1 class="admin-title">إدارة الطلبات</h1>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <span>مرحباً، <strong class="user-name">مدير النظام</strong></span>
+                </div>
+                <button id="refreshOrders" class="btn-admin btn-admin-primary">
+                    🔄 تحديث
+                </button>
+            </div>
+        </header>
+
+        <!-- Orders Summary -->
+        <section class="admin-cards">
+            <div class="admin-card">
+                <div class="card-icon">📦</div>
+                <div class="card-value" id="totalOrders">0</div>
+                <div class="card-label">إجمالي الطلبات</div>
+            </div>
+            <div class="admin-card">
+                <div class="card-icon">⏳</div>
+                <div class="card-value" id="pendingOrders">0</div>
+                <div class="card-label">طلبات قيد الانتظار</div>
+            </div>
+            <div class="admin-card">
+                <div class="card-icon">✅</div>
+                <div class="card-value" id="completedOrders">0</div>
+                <div class="card-label">طلبات مكتملة</div>
+            </div>
+            <div class="admin-card">
+                <div class="card-icon">💰</div>
+                <div class="card-value" id="totalRevenue">0 دينار</div>
+                <div class="card-label">إجمالي الإيرادات</div>
+            </div>
+        </section>
+
+        <!-- Orders Actions -->
+        <section class="orders-actions">
+            <div class="action-bar">
+                <div class="search-box">
+                    <input type="text" id="orderSearch" placeholder="ابحث في الطلبات..." class="form-control">
+                    <span class="search-icon">🔍</span>
+                </div>
+                <div class="action-buttons">
+                    <select id="orderFilter" class="form-control">
+                        <option value="">جميع الطلبات</option>
+                        <option value="pending">قيد الانتظار</option>
+                        <option value="processing">قيد المعالجة</option>
+                        <option value="completed">مكتملة</option>
+                        <option value="cancelled">ملغاة</option>
+                    </select>
+                    <select id="dateFilter" class="form-control">
+                        <option value="">جميع التواريخ</option>
+                        <option value="today">اليوم</option>
+                        <option value="week">هذا الأسبوع</option>
+                        <option value="month">هذا الشهر</option>
+                    </select>
+                    <button id="exportOrders" class="btn-admin btn-admin-secondary">
+                        📥 تصدير
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Orders Table -->
+        <section class="orders-table-section">
+            <div class="admin-table">
+                <div class="table-header">
+                    <h3 class="table-title">قائمة الطلبات</h3>
+                    <div class="table-actions">
+                        <span id="ordersCount">0 طلب</span>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>رقم الطلب</th>
+                                <th>العميل</th>
+                                <th>المنتجات</th>
+                                <th>الكمية</th>
+                                <th>المبلغ</th>
+                                <th>الحالة</th>
+                                <th>التاريخ</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersTableBody">
+                            <!-- Orders will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Order Details Modal -->
+    <div id="orderDetailsModal" class="admin-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">تفاصيل الطلب <span id="orderNumber"></span></h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="orderDetailsContent">
+                    <!-- Order details will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update Status Modal -->
+    <div id="updateStatusModal" class="admin-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">تحديث حالة الطلب</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="updateStatusForm" class="admin-form">
+                    <div class="form-group">
+                        <label for="orderStatus" class="form-label">الحالة الجديدة</label>
+                        <select id="orderStatus" name="status" class="form-control" required>
+                            <option value="pending">قيد الانتظار</option>
+                            <option value="processing">قيد المعالجة</option>
+                            <option value="completed">مكتمل</option>
+                            <option value="cancelled">ملغى</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="statusNotes" class="form-label">ملاحظات</label>
+                        <textarea id="statusNotes" name="notes" class="form-control" rows="3"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-admin btn-admin-primary">تحديث الحالة</button>
+                        <button type="button" class="btn-admin btn-admin-secondary" onclick="ordersManager.closeModal('updateStatusModal')">إلغاء</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/orders.js"></script>
+</body>
+</html>

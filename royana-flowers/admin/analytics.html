@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التقارير والتحليلات - رويانا</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="admin-body">
+    <!-- Admin Sidebar -->
+    <nav class="admin-sidebar">
+        <div class="admin-brand">
+            <h2>🌹 رويانا</h2>
+            <small>لوحة التحكم</small>
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li class="menu-item">
+                <a href="dashboard.html" class="menu-link">
+                    <span class="menu-icon">📊</span>
+                    <span class="menu-text">لوحة التحكم</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="products.html" class="menu-link">
+                    <span class="menu-icon">🌹</span>
+                    <span class="menu-text">إدارة المنتجات</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="orders.html" class="menu-link">
+                    <span class="menu-icon">📦</span>
+                    <span class="menu-text">الطلبات</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="customers.html" class="menu-link">
+                    <span class="menu-icon">👥</span>
+                    <span class="menu-text">العملاء</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="analytics.html" class="menu-link active">
+                    <span class="menu-icon">📈</span>
+                    <span class="menu-text">التقارير</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="settings.html" class="menu-link">
+                    <span class="menu-icon">⚙️</span>
+                    <span class="menu-text">الإعدادات</span>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <button id="logoutBtn" class="btn-admin btn-admin-secondary btn-block">
+                <span class="menu-icon">🚪</span>
+                <span class="menu-text">تسجيل الخروج</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <!-- Admin Header -->
+        <header class="admin-header">
+            <div class="header-left">
+                <button id="sidebarToggle" class="btn-admin btn-admin-secondary">
+                    ☰
+                </button>
+                <h1 class="admin-title">التقارير والتحليلات</h1>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <span>مرحباً، <strong class="user-name">مدير النظام</strong></span>
+                </div>
+                <div class="date-filters">
+                    <select id="reportPeriod" class="form-control">
+                        <option value="week">أسبوع</option>
+                        <option value="month" selected>شهر</option>
+                        <option value="quarter">ربع سنة</option>
+                        <option value="year">سنة</option>
+                    </select>
+                    <button id="refreshAnalytics" class="btn-admin btn-admin-primary">
+                        🔄 تحديث
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- KPI Cards -->
+        <section class="admin-cards">
+            <div class="admin-card">
+                <div class="card-icon">💰</div>
+                <div class="card-value" id="totalRevenue">0 دينار</div>
+                <div class="card-label">إجمالي الإيرادات</div>
+            </div>
+            <div class="admin-card">
+                <div class="card-icon">📦</div>
+                <div class="card-value" id="totalOrders">0</div>
+                <div class="card-label">إجمالي الطلبات</div>
+            </div>
+            <div class="admin-card">
+                <div class="card-icon">🌹</div>
+                <div class="card-value" id="totalProducts">0</div>
+                <div class="card-label">إجمالي المنتجات</div>
+            </div>
+            <div class="admin-card">
+                <div class="card-icon">📊</div>
+                <div class="card-value" id="conversionRate">0%</div>
+                <div class="card-label">معدل التحويل</div>
+            </div>
+        </section>
+
+        <!-- Charts Section -->
+        <section class="analytics-charts">
+            <div class="charts-grid">
+                <div class="chart-container large">
+                    <div class="chart-header">
+                        <h3>أداء المبيعات</h3>
+                        <div class="chart-actions">
+                            <button class="btn-admin btn-admin-secondary btn-sm" data-export="sales">📥 تصدير</button>
+                        </div>
+                    </div>
+                    <canvas id="salesChart"></canvas>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>توزيع المنتجات</h3>
+                    </div>
+                    <canvas id="productsChart"></canvas>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>الإيرادات الشهرية</h3>
+                    </div>
+                    <canvas id="revenueChart"></canvas>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>أداء المتجر</h3>
+                    </div>
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics Sections -->
+        <section class="analytics-stats">
+            <div class="stats-grid">
+                <!-- Products Statistics -->
+                <div class="stats-card">
+                    <h3>إحصائيات المنتجات</h3>
+                    <div id="productsStats" class="stats-content">
+                        <!-- Products stats will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Orders Statistics -->
+                <div class="stats-card">
+                    <h3>إحصائيات الطلبات</h3>
+                    <div id="ordersStats" class="stats-content">
+                        <!-- Orders stats will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Customers Statistics -->
+                <div class="stats-card">
+                    <h3>إحصائيات العملاء</h3>
+                    <div id="customersStats" class="stats-content">
+                        <!-- Customers stats will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Contacts Statistics -->
+                <div class="stats-card">
+                    <h3>إحصائيات الاتصال</h3>
+                    <div id="contactsStats" class="stats-content">
+                        <!-- Contacts stats will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Export Section -->
+        <section class="export-section">
+            <div class="export-card">
+                <h3>تصدير التقارير</h3>
+                <div class="export-options">
+                    <button class="btn-admin btn-admin-primary" data-export="products">
+                        📥 تصدير المنتجات
+                    </button>
+                    <button class="btn-admin btn-admin-primary" data-export="orders">
+                        📥 تصدير الطلبات
+                    </button>
+                    <button class="btn-admin btn-admin-primary" data-export="customers">
+                        📥 تصدير العملاء
+                    </button>
+                    <button class="btn-admin btn-admin-primary" data-export="analytics">
+                        📥 تصدير التحليلات
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/analytics.js"></script>
+</body>
+</html>

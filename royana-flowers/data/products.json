@@ -1,0 +1,38 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "ورد أحمر هولندي",
+      "nameEn": "Dutch Red Rose",
+      "category": "ورود حمراء",
+      "supplier": "Holland Flowers",
+      "origin": "هولندا",
+      "quantity": 500,
+      "minOrder": 100,
+      "price": 1500,
+      "description": "أجود أنواع الورود الحمراء الهولندية ذات الجودة العالية واللون النابض بالحياة.",
+      "images": ["🌹"],
+      "inStock": true,
+      "featured": true,
+      "popularity": 95,
+      "createdAt": "2024-01-15T00:00:00.000Z",
+      "updatedAt": "2024-01-15T00:00:00.000Z"
+    }
+  ],
+  "categories": [
+    "ورود حمراء",
+    "ورود بيضاء",
+    "ورود وردية",
+    "باقات",
+    "زنابق",
+    "توليب"
+  ],
+  "suppliers": [
+    "Holland Flowers",
+    "Ecuador Blooms",
+    "Kenya Flowers",
+    "Global Bouquets",
+    "Lily World",
+    "Tulip Masters"
+  ]
+}

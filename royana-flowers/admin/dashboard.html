@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - رويانا</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="admin-body">
+    <!-- Loading Screen -->
+    <div id="dashboardLoading" class="loading-screen">
+        <div class="loading-content">
+            <div class="flower-loader"></div>
+            <p>جاري تحميل لوحة التحكم...</p>
+        </div>
+    </div>
+
+    <!-- Admin Sidebar -->
+    <nav class="admin-sidebar">
+        <div class="admin-brand">
+            <h2>🌹 رويانا</h2>
+            <small>لوحة التحكم</small>
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li class="menu-item">
+                <a href="dashboard.html" class="menu-link active">
+                    <span class="menu-icon">📊</span>
+                    <span class="menu-text">لوحة التحكم</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="products.html" class="menu-link">
+                    <span class="menu-icon">🌹</span>
+                    <span class="menu-text">إدارة المنتجات</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="orders.html" class="menu-link">
+                    <span class="menu-icon">📦</span>
+                    <span class="menu-text">الطلبات</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="customers.html" class="menu-link">
+                    <span class="menu-icon">👥</span>
+                    <span class="menu-text">العملاء</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="analytics.html" class="menu-link">
+                    <span class="menu-icon">📈</span>
+                    <span class="menu-text">التقارير</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="settings.html" class="menu-link">
+                    <span class="menu-icon">⚙️</span>
+                    <span class="menu-text">الإعدادات</span>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <button id="logoutBtn" class="btn-admin btn-admin-secondary btn-block">
+                <span class="menu-icon">🚪</span>
+                <span class="menu-text">تسجيل الخروج</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <!-- Admin Header -->
+        <header class="admin-header">
+            <div class="header-left">
+                <button id="sidebarToggle" class="btn-admin btn-admin-secondary">
+                    ☰
+                </button>
+                <h1 class="admin-title">لوحة التحكم</h1>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <span>مرحباً، <strong class="user-name">مدير النظام</strong></span>
+                </div>
+                <button id="refreshData" class="btn-admin btn-admin-primary">
+                    🔄 تحديث
+                </button>
+            </div>
+        </header>
+
+        <!-- Stats Cards -->
+        <section class="admin-cards">
+            <div class="admin-card">
+                <div class="card-icon">🌹</div>
+                <div class="card-value" id="totalProducts">0</div>
+                <div class="card-label">إجمالي المنتجات</div>
+            </div>
+            <div class="admin-card">
+                <div class="card-icon">📦</div>
+                <div class="card-value" id="totalOrders">0</div>
+                <div class="card-label">إجمالي الطلبات</div>
+            </div>
+            <div class="admin-card">
+                <div class="card-icon">💰</div>
+                <div class="card-value" id="totalRevenue">0 دينار</div>
+                <div class="card-label">إجمالي الإيرادات</div>
+            </div>
+            <div class="admin-card">
+                <div class="card-icon">👥</div>
+                <div class="card-value" id="customerSatisfaction">0%</div>
+                <div class="card-label">رضا العملاء</div>
+            </div>
+        </section>
+
+        <!-- Charts Section -->
+        <section class="charts-section">
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>أداء المبيعات</h3>
+                        <div class="period-filters">
+                            <button class="period-filter active" data-period="week">أسبوع</button>
+                            <button class="period-filter" data-period="month">شهر</button>
+                            <button class="period-filter" data-period="year">سنة</button>
+                        </div>
+                    </div>
+                    <canvas id="salesChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>توزيع المنتجات</h3>
+                    </div>
+                    <canvas id="productsChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Activity & Top Products -->
+        <section class="dashboard-grid">
+            <!-- Recent Activity -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3>النشاط الحديث</h3>
+                    <a href="#" class="view-all">عرض الكل</a>
+                </div>
+                <div class="card-body">
+                    <div id="recentActivity" class="activity-list">
+                        <!-- Activity items will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Products -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3>المنتجات الأكثر طلباً</h3>
+                    <a href="products.html" class="view-all">عرض الكل</a>
+                </div>
+                <div class="card-body">
+                    <div id="topProducts" class="top-products-list">
+                        <!-- Top products will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="quick-actions">
+            <h3>إجراءات سريعة</h3>
+            <div class="actions-grid">
+                <a href="products.html?action=add" class="action-card">
+                    <div class="action-icon">➕</div>
+                    <div class="action-text">إضافة منتج جديد</div>
+                </a>
+                <a href="orders.html" class="action-card">
+                    <div class="action-icon">📦</div>
+                    <div class="action-text">عرض الطلبات الجديدة</div>
+                </a>
+                <a href="analytics.html" class="action-card">
+                    <div class="action-icon">📈</div>
+                    <div class="action-text">عرض التقارير</div>
+                </a>
+                <a href="settings.html" class="action-card">
+                    <div class="action-icon">⚙️</div>
+                    <div class="action-text">الإعدادات</div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize admin dashboard
+            if (typeof adminDashboard !== 'undefined') {
+                adminDashboard.init();
+            }
+            
+            // Hide loading screen after 2 seconds
+            setTimeout(() => {
+                const loadingScreen = document.getElementById('dashboardLoading');
+                if (loadingScreen) {
+                    loadingScreen.style.display = 'none';
+                }
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

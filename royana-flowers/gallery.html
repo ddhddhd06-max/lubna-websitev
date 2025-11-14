@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض الأعمال - رويانا</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading" class="loading-screen">
+        <div class="loading-content">
+            <div class="flower-loader"></div>
+            <p>جاري تحميل المعرض...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" style="color: inherit; text-decoration: none;">
+                    <span>🌹 رويانا</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">الرئيسية</a></li>
+                <li><a href="products.html" class="nav-link">المنتجات</a></li>
+                <li><a href="gallery.html" class="nav-link active">معرض الأعمال</a></li>
+                <li><a href="about.html" class="nav-link">عنّا</a></li>
+                <li><a href="contact.html" class="nav-link">اتصل بنا</a></li>
+                <li><a href="login.html" class="nav-link login-btn">دخول المالك</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Gallery Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="page-title">معرض أعمالنا</h1>
+                <p class="page-subtitle">لقطات من جمال طبيعتنا وإبداع تصميماتنا</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Filter -->
+    <section class="gallery-filter">
+        <div class="container">
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">الكل</button>
+                <button class="filter-tab" data-filter="bouquets">باقات</button>
+                <button class="filter-tab" data-filter="events">مناسبات</button>
+                <button class="filter-tab" data-filter="designs">تصميمات</button>
+                <button class="filter-tab" data-filter="weddings">أعراس</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Gallery items will be loaded here -->
+                <div class="gallery-item" data-category="bouquets">
+                    <div class="gallery-card">
+                        <div class="gallery-image">
+                            <div class="image-placeholder">💐</div>
+                        </div>
+                        <div class="gallery-content">
+                            <h3>باقة فاخرة</h3>
+                            <p>باقة متنوعة من الورود الحمراء والبيضاء</p>
+                            <div class="gallery-meta">
+                                <span class="category">باقات</span>
+                                <span class="date">يناير 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="events">
+                    <div class="gallery-card">
+                        <div class="gallery-image">
+                            <div class="image-placeholder">🎉</div>
+                        </div>
+                        <div class="gallery-content">
+                            <h3>حفل تخرج</h3>
+                            <p>تصميم خاص لحفل تخرج جامعي</p>
+                            <div class="gallery-meta">
+                                <span class="category">مناسبات</span>
+                                <span class="date">ديسمبر 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="designs">
+                    <div class="gallery-card">
+                        <div class="gallery-image">
+                            <div class="image-placeholder">🎨</div>
+                        </div>
+                        <div class="gallery-content">
+                            <h3>تصميم فني</h3>
+                            <p>تركيبة فنية من الورود بأنماط مبتكرة</p>
+                            <div class="gallery-meta">
+                                <span class="category">تصميمات</span>
+                                <span class="date">نوفمبر 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="weddings">
+                    <div class="gallery-card">
+                        <div class="gallery-image">
+                            <div class="image-placeholder">💒</div>
+                        </div>
+                        <div class="gallery-content">
+                            <h3>زفاف مميز</h3>
+                            <p>تصميمات ورود لحفل زفاف فاخر</p>
+                            <div class="gallery-meta">
+                                <span class="category">أعراس</span>
+                                <span class="date">أكتوبر 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="bouquets">
+                    <div class="gallery-card">
+                        <div class="gallery-image">
+                            <div class="image-placeholder">🌹</div>
+                        </div>
+                        <div class="gallery-content">
+                            <h3>باقة حمراء</h3>
+                            <p>باقة ورود حمراء كلاسيكية</p>
+                            <div class="gallery-meta">
+                                <span class="category">باقات</span>
+                                <span class="date">سبتمبر 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="events">
+                    <div class="gallery-card">
+                        <div class="gallery-image">
+                            <div class="image-placeholder">🏢</div>
+                        </div>
+                        <div class="gallery-content">
+                            <h3>افتتاح شركة</h3>
+                            <p>تصميمات ورود لافتتاح شركة جديدة</p>
+                            <div class="gallery-meta">
+                                <span class="category">مناسبات</span>
+                                <span class="date">أغسطس 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="gallery-stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">تصميم منفذ</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">مناسبة خاصة</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">عرس مميز</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">رضا العملاء</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="gallery-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>مستعد لتحويل مناسبتك إلى ذكرى لا تنسى؟</h2>
+                <p>اتصل بنا الآن للحصول على استشارة مجانية وتصميم مخصص</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary">اتصل بنا</a>
+                    <a href="products.html" class="btn btn-secondary">استعرض المنتجات</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>رويانا</h3>
+                    <p>جملة الورود المستوردة - لأنك تستحق الأفضل</p>
+                </div>
+                <div class="footer-section">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="products.html">المنتجات</a></li>
+                        <li><a href="gallery.html">معرض الأعمال</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>معلومات الاتصال</h4>
+                    <p>📞 0770 123 4567</p>
+                    <p>📧 info@royana.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 رويانا. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/gallery.js"></script>
+</body>
+</html>

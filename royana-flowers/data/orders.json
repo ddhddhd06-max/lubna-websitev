@@ -1,0 +1,44 @@
+{
+  "orders": [
+    {
+      "id": 1,
+      "orderNumber": "ORD-001",
+      "customer": {
+        "name": "محل الورود الجميلة",
+        "phone": "07701234567",
+        "email": "info@beautifulflowers.com"
+      },
+      "products": [
+        {
+          "id": 1,
+          "name": "ورد أحمر هولندي",
+          "quantity": 150,
+          "price": 1500
+        },
+        {
+          "id": 4,
+          "name": "باقة متنوعة فاخرة",
+          "quantity": 25,
+          "price": 5000
+        }
+      ],
+      "total": 350000,
+      "status": "completed",
+      "paymentMethod": "نقدي",
+      "notes": "طلب عادي",
+      "createdAt": "2024-01-20T10:30:00.000Z",
+      "updatedAt": "2024-01-20T10:30:00.000Z"
+    }
+  ],
+  "statuses": [
+    "pending",
+    "processing", 
+    "completed",
+    "cancelled"
+  ],
+  "paymentMethods": [
+    "نقدي",
+    "حوالة بنكية",
+    "شيك"
+  ]
+}

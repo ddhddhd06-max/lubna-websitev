@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الإعدادات - رويانا</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+    <!-- Admin Sidebar -->
+    <nav class="admin-sidebar">
+        <div class="admin-brand">
+            <h2>🌹 رويانا</h2>
+            <small>لوحة التحكم</small>
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li class="menu-item">
+                <a href="dashboard.html" class="menu-link">
+                    <span class="menu-icon">📊</span>
+                    <span class="menu-text">لوحة التحكم</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="products.html" class="menu-link">
+                    <span class="menu-icon">🌹</span>
+                    <span class="menu-text">إدارة المنتجات</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="orders.html" class="menu-link">
+                    <span class="menu-icon">📦</span>
+                    <span class="menu-text">الطلبات</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="customers.html" class="menu-link">
+                    <span class="menu-icon">👥</span>
+                    <span class="menu-text">العملاء</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="analytics.html" class="menu-link">
+                    <span class="menu-icon">📈</span>
+                    <span class="menu-text">التقارير</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="settings.html" class="menu-link active">
+                    <span class="menu-icon">⚙️</span>
+                    <span class="menu-text">الإعدادات</span>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <button id="logoutBtn" class="btn-admin btn-admin-secondary btn-block">
+                <span class="menu-icon">🚪</span>
+                <span class="menu-text">تسجيل الخروج</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <!-- Admin Header -->
+        <header class="admin-header">
+            <div class="header-left">
+                <button id="sidebarToggle" class="btn-admin btn-admin-secondary">
+                    ☰
+                </button>
+                <h1 class="admin-title">الإعدادات</h1>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <span>مرحباً، <strong class="user-name">مدير النظام</strong></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Settings Tabs -->
+        <div class="settings-tabs">
+            <button class="tab-btn active" data-tab="general">عام</button>
+            <button class="tab-btn" data-tab="products">المنتجات</button>
+            <button class="tab-btn" data-tab="notifications">الإشعارات</button>
+            <button class="tab-btn" data-tab="security">الأمان</button>
+            <button class="tab-btn" data-tab="backup">النسخ الاحتياطي</button>
+        </div>
+
+        <!-- General Settings -->
+        <div id="general" class="tab-content active">
+            <div class="settings-card">
+                <h3>إعدادات الموقع العامة</h3>
+                
+                <form id="generalSettingsForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="siteName" class="form-label">اسم الموقع</label>
+                            <input type="text" id="siteName" name="siteName" class="form-control" value="رويانا">
+                        </div>
+                        <div class="form-group">
+                            <label for="siteDescription" class="form-label">وصف الموقع</label>
+                            <input type="text" id="siteDescription" name="siteDescription" class="form-control" 
+                                   value="جملة الورود المستوردة - لأنك تستحق الأفضل">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contactEmail" class="form-label">البريد الإلكتروني</label>
+                            <input type="email" id="contactEmail" name="contactEmail" class="form-control" 
+                                   value="info@royana.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactPhone" class="form-label">رقم الهاتف</label>
+                            <input type="tel" id="contactPhone" name="contactPhone" class="form-control" 
+                                   value="07701234567">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="siteAddress" class="form-label">عنوان المتجر</label>
+                        <textarea id="siteAddress" name="siteAddress" class="form-control" rows="3">بغداد، المنصور - شارع الزهور، بناية ١٢٣</textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="workingHours" class="form-label">ساعات العمل</label>
+                            <input type="text" id="workingHours" name="workingHours" class="form-control" 
+                                   value="الأحد - الخميس: 8:00 - 18:00">
+                        </div>
+                        <div class="form-group">
+                            <label for="weekendHours" class="form-label">ساعات نهاية الأسبوع</label>
+                            <input type="text" id="weekendHours" name="weekendHours" class="form-control" 
+                                   value="الجمعة - السبت: 10:00 - 16:00">
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-admin btn-admin-primary">حفظ التغييرات</button>
+                        <button type="reset" class="btn-admin btn-admin-secondary">إعادة تعيين</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="settings-card">
+                <h3>إعدادات التصميم</h3>
+                
+                <form id="designSettingsForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="primaryColor" class="form-label">اللون الأساسي</label>
+                            <input type="color" id="primaryColor" name="primaryColor" class="form-control" value="#e91e63">
+                        </div>
+                        <div class="form-group">
+                            <label for="secondaryColor" class="form-label">اللون الثانوي</label>
+                            <input type="color" id="secondaryColor" name="secondaryColor" class="form-control" value="#9c27b0">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">نمط التصميم</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="theme" value="light" checked>
+                                <span class="radio-text">فاتح</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="theme" value="dark">
+                                <span class="radio-text">غامق</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="theme" value="auto">
+                                <span class="radio-text">تلقائي</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">إعدادات إضافية</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="animations" checked>
+                                <span class="checkbox-text">تفعيل الحركات والأنيميشن</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="rtl" checked>
+                                <span class="checkbox-text">تفعيل الواجهة من اليمين لليسار</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="responsive" checked>
+                                <span class="checkbox-text">تفعيل التصميم المتجاوب</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-admin btn-admin-primary">تطبيق التصميم</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Products Settings -->
+        <div id="products" class="tab-content">
+            <div class="settings-card">
+                <h3>إعدادات المنتجات</h3>
+                
+                <form id="productsSettingsForm">
+                    <div class="form-group">
+                        <label for="defaultCurrency" class="form-label">العملة الافتراضية</label>
+                        <select id="defaultCurrency" name="defaultCurrency" class="form-control">
+                            <option value="IQD" selected>الدينار العراقي (IQD)</option>
+                            <option value="USD">الدولار الأمريكي (USD)</option>
+                            <option value="EUR">اليورو (EUR)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="minOrderQuantity" class="form-label">الحد الأدنى للطلب</label>
+                            <input type="number" id="minOrderQuantity" name="minOrderQuantity" class="form-control" value="50">
+                        </div>
+                        <div class="form-group">
+                            <label for="lowStockThreshold" class="form-label">حد التنبيه للمخزون</label>
+                            <input type="number" id="lowStockThreshold" name="lowStockThreshold" class="form-control" value="20">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">إعدادات العرض</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="showPrices" checked>
+                                <span class="checkbox-text">عرض الأسعار للزوار</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="showStock" checked>
+                                <span class="checkbox-text">عرض كميات المخزون</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="featuredProducts" checked>
+                                <span class="checkbox-text">عرض المنتجات المميزة</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-admin btn-admin-primary">حفظ الإعدادات</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Notifications Settings -->
+        <div id="notifications" class="tab-content">
+            <div class="settings-card">
+                <h3>إعدادات الإشعارات</h3>
+                
+                <form id="notificationsSettingsForm">
+                    <div class="form-group">
+                        <label class="form-label">أنواع الإشعارات</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="newOrders" checked>
+                                <span class="checkbox-text">طلبات جديدة</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="lowStock" checked>
+                                <span class="checkbox-text">منتجات منخفضة المخزون</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="newContacts" checked>
+                                <span class="checkbox-text">رسائل اتصال جديدة</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="systemUpdates" checked>
+                                <span class="checkbox-text">تحديثات النظام</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">طرق الإشعار</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="emailNotifications" checked>
+                                <span class="checkbox-text">البريد الإلكتروني</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="browserNotifications">
+                                <span class="checkbox-text">إشعارات المتصفح</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="smsNotifications">
+                                <span class="checkbox-text">رسائل SMS</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notificationEmail" class="form-label">البريد الإلكتروني للإشعارات</label>
+                        <input type="email" id="notificationEmail" name="notificationEmail" class="form-control" 
+                               value="notifications@royana.com">
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-admin btn-admin-primary">حفظ الإعدادات</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Security Settings -->
+        <div id="security" class="tab-content">
+            <div class="settings-card">
+                <h3>إعدادات الأمان</h3>
+                
+                <form id="securitySettingsForm">
+                    <div class="form-group">
+                        <label for="currentPassword" class="form-label">كلمة المرور الحالية</label>
+                        <input type="password" id="currentPassword" name="currentPassword" class="form-control">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="newPassword" class="form-label">كلمة المرور الجديدة</label>
+                            <input type="password" id="newPassword" name="newPassword" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword" class="form-label">تأكيد كلمة المرور</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="password-strength">
+                        <div class="strength-meter">
+                            <div class="strength-bar"></div>
+                        </div>
+                        <div class="strength-text">قوة كلمة المرور: <span>ضعيفة</span></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">خيارات الأمان الإضافية</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="twoFactorAuth">
+                                <span class="checkbox-text">المصادقة الثنائية</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="sessionTimeout" checked>
+                                <span class="checkbox-text">إنهاء الجلسة تلقائياً بعد 30 دقيقة</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="loginAlerts">
+                                <span class="checkbox-text">تنبيهات تسجيل الدخول</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-admin btn-admin-primary">تحديث كلمة المرور</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="settings-card">
+                <h3>نشاط تسجيل الدخول</h3>
+                <div class="login-sessions">
+                    <div class="session-item current">
+                        <div class="session-info">
+                            <strong>الجلسة الحالية</strong>
+                            <span>جهاز: كمبيوتر شخصي • متصفح: Chrome</span>
+                            <span>عنوان IP: 192.168.1.1 • بدأت: ${new Date().toLocaleString('ar-IQ')}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="session-item">
+                        <div class="session-info">
+                            <strong>جلسة سابقة</strong>
+                            <span>جهاز: هاتف محمول • متصفح: Safari</span>
+                            <span>عنوان IP: 192.168.1.2 • انتهت: ${new Date(Date.now() - 86400000).toLocaleString('ar-IQ')}</span>
+                        </div>
+                        <button class="btn-admin btn-admin-danger btn-sm">إنهاء الجلسة</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Backup Settings -->
+        <div id="backup" class="tab-content">
+            <div class="settings-card">
+                <h3>النسخ الاحتياطي</h3>
+                
+                <div class="backup-info">
+                    <div class="backup-stats">
+                        <div class="stat">
+                            <div class="stat-value">٢٤٥</div>
+                            <div class="stat-label">منتج</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">١٬٢٣٤</div>
+                            <div class="stat-label">طلب</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">٥٦٧</div>
+                            <div class="stat-label">زبون</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">٨٩</div>
+                            <div class="stat-label">رسالة اتصال</div>
+                        </div>
+                    </div>
+
+                    <div class="backup-actions">
+                        <button id="createBackup" class="btn-admin btn-admin-primary">
+                            📦 إنشاء نسخة احتياطية
+                        </button>
+                        <button id="restoreBackup" class="btn-admin btn-admin-secondary">
+                            🔄 استعادة نسخة احتياطية
+                        </button>
+                        <button id="autoBackup" class="btn-admin btn-admin-secondary">
+                            ⚙️ إعداد النسخ التلقائي
+                        </button>
+                    </div>
+                </div>
+
+                <div class="backup-history">
+                    <h4>سجل النسخ الاحتياطية</h4>
+                    <div class="backup-list">
+                        <div class="backup-item">
+                            <div class="backup-details">
+                                <strong>النسخة الاحتياطية الكاملة</strong>
+                                <span>تم الإنشاء: ${new Date().toLocaleString('ar-IQ')}</span>
+                                <span>الحجم: 2.4 MB • العناصر: 2,135</span>
+                            </div>
+                            <div class="backup-actions">
+                                <button class="btn-admin btn-admin-primary btn-sm">تحميل</button>
+                                <button class="btn-admin btn-admin-danger btn-sm">حذف</button>
+                            </div>
+                        </div>
+                        
+                        <div class="backup-item">
+                            <div class="backup-details">
+                                <strong>نسخة المنتجات فقط</strong>
+                                <span>تم الإنشاء: ${new Date(Date.now() - 86400000).toLocaleString('ar-IQ')}</span>
+                                <span>الحجم: 1.1 MB • العناصر: 245</span>
+                            </div>
+                            <div class="backup-actions">
+                                <button class="btn-admin btn-admin-primary btn-sm">تحميل</button>
+                                <button class="btn-admin btn-admin-danger btn-sm">حذف</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/settings.js"></script>
+</body>
+</html>
